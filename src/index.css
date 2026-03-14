@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#FFFDF7] text-[#1E1E1E];
+    background-image: radial-gradient(#1E1E1E33 2px, transparent 2px);
+    background-size: 32px 32px;
+  }
+}
+
+/* Hide scrollbar for horizontal scrolling areas */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.card-illustrative {
+  @apply bg-white border-4 border-[#1E1E1E] rounded-2xl shadow-[8px_8px_0px_0px_#1E1E1E] transition-all hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_#1E1E1E];
+}
