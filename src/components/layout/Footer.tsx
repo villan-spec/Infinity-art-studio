@@ -31,10 +31,10 @@ export function Footer() {
             </h4>
             <ul className="space-y-4 text-base font-bold">
               {[
-                { name: "Couple Collection", link: "/category/couples" },
-                { name: "Wall Art", link: "/category/wall-art" },
-                { name: "Hoodies", link: "/category/hoodies" },
-                { name: "Custom Mugs", link: "/category/mugs" },
+                { name: "Photo Frames", link: "/category/photo-frames" },
+                { name: "Printed ur T-shirt", link: "/category/tshirts" },
+                { name: "Resin Art", link: "/category/resin-art" },
+                { name: "Texture Painting", link: "/category/texture-painting" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link

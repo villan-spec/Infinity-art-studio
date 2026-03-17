@@ -1,28 +1,29 @@
-import { motion } from "motion/react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Heart, Upload, Truck } from "lucide-react";
 
 const categories = [
   {
-    name: "Couple T-Shirts",
+    name: "Photo Frames",
+    image: "https://picsum.photos/seed/photoframes/400/500",
+    link: "/category/photo-frames",
+  },
+  {
+    name: "Printed ur T-shirt",
     image: "https://picsum.photos/seed/tshirt/400/500",
     link: "/category/tshirts",
   },
   {
-    name: "Custom Mugs",
-    image: "https://picsum.photos/seed/mug/400/500",
-    link: "/category/mugs",
+    name: "Resin Art",
+    image: "https://picsum.photos/seed/resinart/400/500",
+    link: "/category/resin-art",
   },
   {
-    name: "Wall Art",
-    image: "https://picsum.photos/seed/wallart/400/500",
-    link: "/category/wall-art",
-  },
-  {
-    name: "Hoodies",
-    image: "https://picsum.photos/seed/hoodie/400/500",
-    link: "/category/hoodies",
+    name: "Texture Painting",
+    image: "https://picsum.photos/seed/texturepainting/400/500",
+    link: "/category/texture-painting",
   },
 ];
 
@@ -32,32 +33,43 @@ const trendingProducts = [
     name: "Minimalist Couple Mug Set",
     price: "₹999",
     rating: 4.9,
-    image: "https://picsum.photos/seed/mugset/400/400",
+    image: "https://picsum.photos/seed/mugset/400/500",
   },
   {
     id: 2,
     name: "Custom Star Map Frame",
     price: "₹1499",
     rating: 4.8,
-    image: "https://picsum.photos/seed/starmap/400/400",
+    image: "https://picsum.photos/seed/starmap/400/500",
   },
   {
     id: 3,
     name: "Matching Anniversary Hoodies",
     price: "₹2499",
     rating: 5.0,
-    image: "https://picsum.photos/seed/hoodieset/400/400",
+    image: "https://picsum.photos/seed/hoodieset/400/500",
   },
   {
     id: 4,
     name: "Personalized Spotify Plaque",
     price: "₹899",
     rating: 4.7,
-    image: "https://picsum.photos/seed/spotify/400/400",
+    image: "https://picsum.photos/seed/spotify/400/500",
   },
 ];
 
+const instaImages = [
+  "https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1484406593171-8140cb927302?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1531366936337-7785a649c71d?w=400&h=400&fit=crop"
+];
+
 export function Home() {
+  const [instaIndex, setInstaIndex] = useState(0);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -439,31 +451,29 @@ export function Home() {
             </motion.a>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
-            {[
-              "https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&h=400&fit=crop",
-              "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=400&h=400&fit=crop",
-              "https://images.unsplash.com/photo-1484406593171-8140cb927302?w=400&h=400&fit=crop",
-              "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=400&h=400&fit=crop",
-              "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop",
-              "https://images.unsplash.com/photo-1531366936337-7785a649c71d?w=400&h=400&fit=crop"
-            ].map((src, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, type: "spring" }}
-                className="aspect-square overflow-hidden rounded-2xl border-4 border-[#1E1E1E] shadow-[6px_6px_0px_0px_#1E1E1E] bg-white hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_#1E1E1E] transition-all cursor-pointer"
-              >
-                <img
-                  src={src}
-                  alt={`Instagram post ${i + 1}`}
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </motion.div>
-            ))}
+          <div className="relative w-full max-w-sm mx-auto h-[400px] sm:h-[450px] flex items-center justify-center cursor-pointer" onClick={() => setInstaIndex((prev) => (prev + 1) % instaImages.length)}>
+            {instaImages.map((src, i) => {
+              const diff = (i - instaIndex + instaImages.length) % instaImages.length;
+              const isVisible = diff <= 2;
+              
+              return (
+                <motion.div
+                  key={src}
+                  animate={{
+                    opacity: isVisible ? (diff === 0 ? 1 : diff === 1 ? 0.8 : 0.5) : 0,
+                    scale: isVisible ? (diff === 0 ? 1 : diff === 1 ? 0.9 : 0.8) : 0.8,
+                    y: isVisible ? (diff === 0 ? 0 : diff === 1 ? 30 : 60) : 50,
+                    zIndex: 30 - diff,
+                    filter: isVisible ? (diff === 0 ? "blur(0px)" : diff === 1 ? "blur(2px)" : "blur(4px)") : "blur(4px)",
+                  }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="absolute top-0 w-full aspect-square rounded-3xl border-4 border-[#1E1E1E] shadow-[8px_8px_0px_0px_#1E1E1E] bg-white overflow-hidden"
+                  style={{ pointerEvents: diff === 0 ? "auto" : "none" }}
+                >
+                  <img src={src} alt={`Instagram post ${i + 1}`} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

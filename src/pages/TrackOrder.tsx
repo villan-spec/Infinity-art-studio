@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Search, Package, Truck, CheckCircle2, Paintbrush } from "lucide-react";
+import { Search, Package, Truck, CheckCircle2, Paintbrush, ArrowLeft } from "lucide-react";
 
 export function TrackOrder() {
+  const navigate = useNavigate();
   const [orderId, setOrderId] = useState("");
   const [tracking, setTracking] = useState(false);
 
@@ -14,8 +16,14 @@ export function TrackOrder() {
   };
 
   return (
-    <div className="bg-[#FFFDF7] min-h-[calc(100vh-80px)] py-16">
+    <div className="bg-[#FFFDF7] min-h-[calc(100vh-80px)] py-8">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-6">
+          <Button variant="ghost" onClick={() => navigate(-1)} className="gap-2 pl-0 hover:bg-transparent hover:underline text-[#1E1E1E] font-bold">
+            <ArrowLeft className="h-5 w-5" />
+            Back
+          </Button>
+        </div>
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-black tracking-tight text-[#1E1E1E] drop-shadow-[2px_2px_0px_#4ECDC4]">
             Track Your Order

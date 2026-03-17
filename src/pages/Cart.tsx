@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { Trash2, Plus, Minus, ArrowRight, Gift } from "lucide-react"
+import { Trash2, Plus, Minus, ArrowRight, Gift, ArrowLeft } from "lucide-react"
 
 export function Cart() {
+  const navigate = useNavigate()
   const cartItems = [
     {
       id: 1,
@@ -28,7 +29,13 @@ export function Cart() {
 
   return (
     <div className="bg-[#FFFDF7] min-h-screen">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mb-6">
+          <Button variant="ghost" onClick={() => navigate(-1)} className="gap-2 pl-0 hover:bg-transparent hover:underline text-[#1E1E1E] font-bold">
+            <ArrowLeft className="h-5 w-5" />
+            Back
+          </Button>
+        </div>
         <h1 className="text-5xl font-black tracking-tight text-[#1E1E1E] drop-shadow-[2px_2px_0px_#4ECDC4]">Shopping Cart</h1>
 
         <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">

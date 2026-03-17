@@ -1,10 +1,11 @@
 import { useState } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { Star, Truck, Shield, RefreshCcw } from "lucide-react"
+import { Star, Truck, Shield, RefreshCcw, ArrowLeft } from "lucide-react"
 
 export function Product() {
   const { productId } = useParams()
+  const navigate = useNavigate()
   const [selectedImage, setSelectedImage] = useState(0)
 
   // Mock product data
@@ -31,7 +32,13 @@ export function Product() {
 
   return (
     <div className="bg-[#FFFDF7] min-h-screen">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mb-6">
+          <Button variant="ghost" onClick={() => navigate(-1)} className="gap-2 pl-0 hover:bg-transparent hover:underline text-[#1E1E1E] font-bold">
+            <ArrowLeft className="h-5 w-5" />
+            Back
+          </Button>
+        </div>
         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12">
           {/* Image gallery */}
           <div className="flex flex-col-reverse">

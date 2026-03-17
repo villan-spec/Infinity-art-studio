@@ -9,10 +9,7 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Gifts", path: "/category/gifts" },
-    { name: "Couple Collection", path: "/category/couples" },
-    { name: "Wall Art", path: "/category/wall-art" },
-    { name: "Hoodies", path: "/category/hoodies" },
+    { name: "Shop", path: "/category/all" },
     { name: "Track Order", path: "/track" },
   ]
 

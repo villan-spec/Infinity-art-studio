@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { CheckCircle2, ShieldCheck, CreditCard, Banknote } from "lucide-react"
+import { CheckCircle2, ShieldCheck, CreditCard, Banknote, ArrowLeft } from "lucide-react"
 import { useState } from "react"
 
 export function Checkout() {
+  const navigate = useNavigate()
   const [step, setStep] = useState(1)
 
   const cartItems = [
@@ -27,7 +28,13 @@ export function Checkout() {
 
   return (
     <div className="bg-[#FFFDF7] min-h-screen">
-      <div className="mx-auto max-w-7xl px-4 pt-16 pb-24 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pt-8 pb-24 sm:px-6 lg:px-8">
+        <div className="mb-6">
+          <Button variant="ghost" onClick={() => navigate(-1)} className="gap-2 pl-0 hover:bg-transparent hover:underline text-[#1E1E1E] font-bold">
+            <ArrowLeft className="h-5 w-5" />
+            Back
+          </Button>
+        </div>
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-12 xl:gap-x-16">
           <div className="lg:col-span-7">
             <h1 className="text-5xl font-black tracking-tight text-[#1E1E1E] drop-shadow-[2px_2px_0px_#FF6B6B] mb-12">Checkout</h1>
