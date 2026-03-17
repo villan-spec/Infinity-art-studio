@@ -164,32 +164,34 @@ export function Category() {
               ) : (
                 <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:gap-x-8">
                   {filteredAndSortedProducts.map((product) => (
-                    <div key={product.id} className="card-illustrative group relative p-4 flex flex-col">
-                      <div className="aspect-[4/5] overflow-hidden rounded-xl border-4 border-[#1E1E1E] mb-4 relative">
+                    <div key={product.id} className="group relative flex flex-col bg-white border-4 border-[#1E1E1E] shadow-[4px_4px_0px_0px_#1E1E1E] rounded-2xl overflow-hidden hover:translate-y-[-4px] hover:shadow-[8px_8px_0px_0px_#1E1E1E] transition-all duration-300">
+                      <div className="aspect-[4/5] w-full overflow-hidden relative border-b-4 border-[#1E1E1E] bg-[#FFFDF7]">
                         <img 
                           src={product.image} 
                           alt={product.name} 
-                          className="object-cover w-full h-full"
+                          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                           referrerPolicy="no-referrer"
                         />
-                        <div className="absolute inset-0 bg-[#1E1E1E]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                        <div className="absolute inset-0 bg-[#1E1E1E]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 backdrop-blur-[2px]">
                           <Link to={`/product/${product.id}`}>
-                            <Button variant="accent" size="sm" className="rounded-xl">Quick View</Button>
+                            <Button variant="accent" size="sm" className="rounded-xl font-bold shadow-[4px_4px_0px_0px_#1E1E1E]">Quick View</Button>
                           </Link>
                         </div>
                       </div>
-                      <div className="space-y-2 flex-1 flex flex-col">
-                        <div className="flex items-center gap-1 text-[#FF6B6B] text-sm">
-                          <Star className="h-5 w-5 fill-current" />
-                          <span className="font-bold text-[#1E1E1E]">{product.rating}</span>
+                      <div className="p-4 sm:p-5 flex-1 flex flex-col bg-white">
+                        <div className="flex items-center gap-1.5 text-[#FF6B6B] mb-2">
+                          <Star className="h-4 w-4 sm:h-5 sm:w-5 fill-current" />
+                          <span className="font-bold text-[#1E1E1E] text-sm sm:text-base">{product.rating}</span>
                         </div>
-                        <h3 className="text-lg sm:text-xl font-bold text-[#1E1E1E] line-clamp-2 flex-1">
+                        <h3 className="text-base sm:text-lg font-black text-[#1E1E1E] line-clamp-2 mb-3 flex-1 leading-tight group-hover:text-[#FF6B6B] transition-colors">
                           <Link to={`/product/${product.id}`}>
                             <span aria-hidden="true" className="absolute inset-0" />
                             {product.name}
                           </Link>
                         </h3>
-                        <p className="text-xl font-black text-[#1E1E1E]">₹{product.price}</p>
+                        <div className="flex items-center justify-between mt-auto pt-4 border-t-2 border-dashed border-[#1E1E1E]/30">
+                          <p className="text-lg sm:text-xl font-black text-[#1E1E1E]">₹{product.price}</p>
+                        </div>
                       </div>
                     </div>
                   ))}

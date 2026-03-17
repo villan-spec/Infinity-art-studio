@@ -232,13 +232,13 @@ export function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-white border-4 border-[#1E1E1E] shadow-[8px_8px_0px_0px_#1E1E1E] rounded-2xl p-4 flex flex-col group transition-transform"
+                whileHover={{ y: -8 }}
+                className="group relative flex flex-col bg-white border-4 border-[#1E1E1E] shadow-[8px_8px_0px_0px_#1E1E1E] rounded-2xl overflow-hidden hover:shadow-[4px_4px_0px_0px_#1E1E1E] transition-all duration-300"
               >
-                <div className="aspect-square overflow-hidden rounded-xl border-4 border-[#1E1E1E] mb-6 relative bg-[#FFFDF7]">
+                <div className="aspect-[4/5] w-full overflow-hidden relative border-b-4 border-[#1E1E1E] bg-[#FFFDF7]">
                   <motion.img
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.5 }}
                     src={product.image}
                     alt={product.name}
                     className="object-cover w-full h-full"
@@ -247,7 +247,7 @@ export function Home() {
                   <div className="absolute top-3 right-3 bg-[#FFE66D] border-2 border-[#1E1E1E] rounded-full p-2 shadow-[2px_2px_0px_0px_#1E1E1E] z-10">
                     <Heart className="h-5 w-5 text-[#1E1E1E] hover:fill-[#FF6B6B] hover:text-[#FF6B6B] transition-colors cursor-pointer" />
                   </div>
-                  <div className="absolute inset-0 bg-[#1E1E1E]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm">
+                  <div className="absolute inset-0 bg-[#1E1E1E]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 backdrop-blur-[2px]">
                     <Link to={`/product/${product.id}`}>
                       <Button className="bg-[#FF6B6B] hover:bg-[#ff5252] text-white border-2 border-[#1E1E1E] shadow-[4px_4px_0px_0px_#1E1E1E] rounded-xl text-lg font-bold px-6 py-6">
                         Quick View
@@ -255,21 +255,24 @@ export function Home() {
                     </Link>
                   </div>
                 </div>
-                <div className="space-y-3 flex-1 flex flex-col">
-                  <div className="flex items-center gap-1 text-[#FF6B6B] bg-[#FFE66D] w-fit px-3 py-1 rounded-full border-2 border-[#1E1E1E]">
+                <div className="p-5 sm:p-6 flex-1 flex flex-col bg-white">
+                  <div className="flex items-center gap-1.5 text-[#FF6B6B] mb-3 bg-[#FFE66D] w-fit px-3 py-1 rounded-full border-2 border-[#1E1E1E]">
                     <Star className="h-4 w-4 fill-current" />
                     <span className="font-black text-[#1E1E1E] text-sm">
                       {product.rating}
                     </span>
                   </div>
-                  <h3 className="text-xl font-black text-[#1E1E1E] line-clamp-2 flex-1 leading-tight group-hover:text-[#4ECDC4] transition-colors">
-                    <Link to={`/product/${product.id}`}>{product.name}</Link>
+                  <h3 className="text-xl font-black text-[#1E1E1E] line-clamp-2 flex-1 leading-tight group-hover:text-[#4ECDC4] transition-colors mb-4">
+                    <Link to={`/product/${product.id}`}>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {product.name}
+                    </Link>
                   </h3>
                   <div className="flex items-center justify-between mt-auto pt-4 border-t-4 border-[#1E1E1E] border-dashed">
                     <p className="text-3xl font-black text-[#1E1E1E]">
                       {product.price}
                     </p>
-                    <button className="bg-[#4ECDC4] p-3 rounded-xl border-2 border-[#1E1E1E] shadow-[2px_2px_0px_0px_#1E1E1E] hover:bg-[#3dbdb4] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                    <button className="bg-[#4ECDC4] p-3 rounded-xl border-2 border-[#1E1E1E] shadow-[2px_2px_0px_0px_#1E1E1E] hover:bg-[#3dbdb4] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all relative z-10">
                       <ArrowRight className="h-6 w-6 text-[#1E1E1E]" />
                     </button>
                   </div>
