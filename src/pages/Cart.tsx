@@ -134,9 +134,36 @@ export function Cart() {
                 </dt>
                 <dd className="font-bold">{shipping === 0 ? 'Free' : `₹${shipping}`}</dd>
               </div>
+
+              {/* Coupon Code Section */}
+              <div className="border-t-4 border-[#1E1E1E] pt-4">
+                <dt className="block text-sm font-bold text-[#1E1E1E] mb-2">
+                  Coupon Code
+                </dt>
+                <dd>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      className="block w-full rounded-xl border-2 border-[#1E1E1E] px-4 py-2 text-[#1E1E1E] shadow-[2px_2px_0px_0px_#1E1E1E] focus:border-[#1E1E1E] focus:outline-none focus:ring-0 sm:text-sm font-medium bg-white"
+                      placeholder="Enter code"
+                      defaultValue="SAVE20"
+                    />
+                    <Button variant="outline" className="rounded-xl bg-white hover:bg-gray-50">
+                      Add
+                    </Button>
+                  </div>
+                  <div className="mt-3 flex items-center justify-between bg-[#FFE66D] px-3 py-2 rounded-xl border-2 border-[#1E1E1E]">
+                    <span className="text-sm font-bold text-[#1E1E1E]">SAVE20 applied (-₹200)</span>
+                    <button type="button" className="text-[#FF6B6B] hover:text-[#ff5252] font-bold text-sm flex items-center gap-1">
+                      <Trash2 className="h-4 w-4" /> Remove
+                    </button>
+                  </div>
+                </dd>
+              </div>
+
               <div className="flex items-center justify-between border-t-4 border-[#1E1E1E] pt-4">
                 <dt className="text-xl font-black text-[#1E1E1E]">Order total</dt>
-                <dd className="text-xl font-black text-[#1E1E1E]">₹{total}</dd>
+                <dd className="text-xl font-black text-[#1E1E1E]">₹{total - 200}</dd>
               </div>
             </dl>
 

@@ -70,14 +70,14 @@ export function Category() {
 
   return (
     <div className="bg-[#FFFDF7] min-h-screen">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex items-center justify-between border-b-4 border-[#1E1E1E] pb-6 mb-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex items-center justify-between border-b-4 border-[#1E1E1E] pb-4 mb-6">
           <div className="flex items-center gap-4">
             <Button variant="ghost" onClick={() => navigate(-1)} className="gap-2 pl-0 hover:bg-transparent hover:underline text-[#1E1E1E] font-bold">
               <ArrowLeft className="h-5 w-5" />
               Back
             </Button>
-            <h1 className="text-3xl font-black tracking-tight text-[#1E1E1E] capitalize drop-shadow-[2px_2px_0px_#FF6B6B]">
+            <h1 className="text-3xl font-black tracking-tight text-[#1E1E1E] capitalize drop-shadow-[2px_2px_0px_#FF6B6B] whitespace-nowrap">
               {categoryId === 'all' ? 'All Products' : categoryId === 'trending' ? 'Trending Now' : categoryId?.replace('-', ' ')}
             </h1>
           </div>
@@ -116,14 +116,14 @@ export function Category() {
           </div>
         </div>
 
-        <section aria-labelledby="products-heading" className="pb-24 pt-6">
+        <section aria-labelledby="products-heading" className="pb-16 pt-4">
           <h2 id="products-heading" className="sr-only">Products</h2>
 
           <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
             {/* Filters */}
             <form className={`lg:block ${isFilterOpen ? 'block' : 'hidden'}`}>
               <h3 className="sr-only">Categories</h3>
-              <ul role="list" className="space-y-4 border-b-2 border-[#1E1E1E] pb-6 text-sm font-bold text-[#1E1E1E]">
+              <ul role="list" className="space-y-4 border-b-2 border-[#1E1E1E] pb-6 text-sm font-bold text-[#1E1E1E] whitespace-nowrap">
                 <li><Link to="/category/all" className={categoryId === 'all' ? 'text-[#FF6B6B]' : 'hover:text-[#FF6B6B]'}>All Products</Link></li>
                 <li><Link to="/category/photo-frames" className={categoryId === 'photo-frames' ? 'text-[#FF6B6B]' : 'hover:text-[#FF6B6B]'}>Photo Frames</Link></li>
                 <li><Link to="/category/tshirts" className={categoryId === 'tshirts' ? 'text-[#FF6B6B]' : 'hover:text-[#FF6B6B]'}>Printed ur T-shirt</Link></li>
@@ -164,8 +164,8 @@ export function Category() {
               ) : (
                 <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:gap-x-8">
                   {filteredAndSortedProducts.map((product) => (
-                    <div key={product.id} className="group relative flex flex-col bg-white border-4 border-[#1E1E1E] shadow-[4px_4px_0px_0px_#1E1E1E] rounded-2xl overflow-hidden hover:translate-y-[-4px] hover:shadow-[8px_8px_0px_0px_#1E1E1E] transition-all duration-300">
-                      <div className="aspect-[4/5] w-full overflow-hidden relative border-b-4 border-[#1E1E1E] bg-[#FFFDF7]">
+                    <div key={product.id} className="group relative flex flex-col bg-white border-4 border-[#1E1E1E] shadow-[6px_6px_0px_0px_#1E1E1E] rounded-2xl p-3 sm:p-4 hover:translate-y-[-4px] hover:shadow-[8px_8px_0px_0px_#1E1E1E] transition-all duration-300">
+                      <div className="aspect-[4/5] w-full overflow-hidden rounded-xl border-2 border-[#1E1E1E] relative mb-4 bg-[#FFFDF7]">
                         <img 
                           src={product.image} 
                           alt={product.name} 
@@ -178,10 +178,10 @@ export function Category() {
                           </Link>
                         </div>
                       </div>
-                      <div className="p-4 sm:p-5 flex-1 flex flex-col bg-white">
-                        <div className="flex items-center gap-1.5 text-[#FF6B6B] mb-2">
-                          <Star className="h-4 w-4 sm:h-5 sm:w-5 fill-current" />
-                          <span className="font-bold text-[#1E1E1E] text-sm sm:text-base">{product.rating}</span>
+                      <div className="flex flex-col flex-1">
+                        <div className="flex items-center gap-1.5 mb-2">
+                          <Star className="h-5 w-5 text-[#FF6B6B] fill-[#FF6B6B]" />
+                          <span className="font-black text-[#1E1E1E] text-base">{product.rating}</span>
                         </div>
                         <h3 className="text-base sm:text-lg font-black text-[#1E1E1E] line-clamp-2 mb-3 flex-1 leading-tight group-hover:text-[#FF6B6B] transition-colors">
                           <Link to={`/product/${product.id}`}>
@@ -189,9 +189,7 @@ export function Category() {
                             {product.name}
                           </Link>
                         </h3>
-                        <div className="flex items-center justify-between mt-auto pt-4 border-t-2 border-dashed border-[#1E1E1E]/30">
-                          <p className="text-lg sm:text-xl font-black text-[#1E1E1E]">₹{product.price}</p>
-                        </div>
+                        <p className="text-xl sm:text-2xl font-black text-[#1E1E1E] mt-auto">₹{product.price}</p>
                       </div>
                     </div>
                   ))}

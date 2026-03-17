@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Heart, Upload, Truck } from "lucide-react";
+import { ArrowRight, Star, Heart, Upload, Truck, Mail, Send } from "lucide-react";
 
 const categories = [
   {
@@ -73,20 +73,25 @@ export function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#FFE66D] border-b-4 border-[#1E1E1E] py-24 sm:py-32 lg:pb-40">
+      <section className="relative overflow-hidden bg-[#FFFDF7] border-b-4 border-[#1E1E1E] py-16 sm:py-20 lg:pb-28">
+        {/* Subtle gradient glows */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#4ECDC4]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FF6B6B]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-1/3 w-96 h-96 bg-[#FFE66D]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <motion.h1
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
-              className="text-6xl font-black tracking-tight text-[#1E1E1E] sm:text-8xl uppercase leading-[0.9]"
+              className="text-6xl font-black tracking-tight text-[#1E1E1E] sm:text-8xl uppercase leading-[0.9] drop-shadow-sm"
             >
               Create Gifts <br />
-              <span className="text-white drop-shadow-[4px_4px_0px_#1E1E1E] relative inline-block group">
+              <span className="text-[#FF6B6B] drop-shadow-[4px_4px_0px_#1E1E1E] relative inline-block group">
                 That Last
                 <motion.span
-                  className="absolute -bottom-2 left-0 w-full h-4 bg-[#4ECDC4] -z-10"
+                  className="absolute -bottom-2 left-0 w-full h-4 bg-[#FFE66D] -z-10"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 0.5, duration: 0.4 }}
@@ -98,7 +103,7 @@ export function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-8 text-2xl font-bold leading-8 text-[#1E1E1E] max-w-2xl mx-auto"
+              className="mt-8 text-2xl font-bold leading-8 text-[#1E1E1E] max-w-2xl mx-auto drop-shadow-sm"
             >
               Personalized with Love 💙. Design unique, high-quality gifts for
               your loved ones in just a few clicks.
@@ -132,38 +137,10 @@ export function Home() {
             </motion.div>
           </div>
         </div>
-
-        {/* Decorative background elements */}
-        <motion.div
-          animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-          className="absolute top-20 left-10 lg:left-20 -z-10 hidden md:block"
-        >
-          <div className="h-32 w-32 rounded-full bg-[#4ECDC4] border-4 border-[#1E1E1E] shadow-[8px_8px_0px_0px_#1E1E1E]"></div>
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, 30, 0], rotate: [12, -10, 12] }}
-          transition={{
-            repeat: Infinity,
-            duration: 6,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-20 right-10 lg:right-20 -z-10 hidden md:block"
-        >
-          <div className="h-40 w-40 bg-[#FF6B6B] border-4 border-[#1E1E1E] shadow-[8px_8px_0px_0px_#1E1E1E]"></div>
-        </motion.div>
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], rotate: [45, 90, 45] }}
-          transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-          className="absolute top-40 right-40 -z-10 hidden lg:block"
-        >
-          <Star className="h-20 w-20 text-white fill-white drop-shadow-[4px_4px_0px_#1E1E1E]" />
-        </motion.div>
       </section>
 
       {/* Category Section */}
-      <section className="py-24 bg-[#FFFDF7] border-b-4 border-[#1E1E1E]">
+      <section className="py-16 bg-[#FFFDF7] border-b-4 border-[#1E1E1E]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-black tracking-tight text-[#1E1E1E] mb-12 text-center">
             Shop by Category
@@ -182,7 +159,7 @@ export function Home() {
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-white p-6 border-t-4 border-[#1E1E1E]">
-                  <h3 className="text-xl font-bold text-[#1E1E1E] mb-1">
+                  <h3 className="text-xl font-bold text-[#1E1E1E] mb-1 whitespace-nowrap truncate">
                     {category.name}
                   </h3>
                   <span className="text-sm font-bold text-[#FF6B6B] flex items-center gap-1">
@@ -196,7 +173,7 @@ export function Home() {
       </section>
 
       {/* Trending Products */}
-      <section className="py-24 bg-[#4ECDC4] border-b-4 border-[#1E1E1E] overflow-hidden">
+      <section className="py-16 bg-[#4ECDC4] border-b-4 border-[#1E1E1E] overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end mb-16 gap-6">
             <motion.h2
@@ -233,9 +210,9 @@ export function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="group relative flex flex-col bg-white border-4 border-[#1E1E1E] shadow-[8px_8px_0px_0px_#1E1E1E] rounded-2xl overflow-hidden hover:shadow-[4px_4px_0px_0px_#1E1E1E] transition-all duration-300"
+                className="group relative flex flex-col bg-white border-4 border-[#1E1E1E] shadow-[6px_6px_0px_0px_#1E1E1E] rounded-2xl p-3 sm:p-4 hover:shadow-[8px_8px_0px_0px_#1E1E1E] transition-all duration-300"
               >
-                <div className="aspect-[4/5] w-full overflow-hidden relative border-b-4 border-[#1E1E1E] bg-[#FFFDF7]">
+                <div className="aspect-[4/5] w-full overflow-hidden rounded-xl border-2 border-[#1E1E1E] relative mb-4 bg-[#FFFDF7]">
                   <motion.img
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.5 }}
@@ -255,25 +232,25 @@ export function Home() {
                     </Link>
                   </div>
                 </div>
-                <div className="p-5 sm:p-6 flex-1 flex flex-col bg-white">
-                  <div className="flex items-center gap-1.5 text-[#FF6B6B] mb-3 bg-[#FFE66D] w-fit px-3 py-1 rounded-full border-2 border-[#1E1E1E]">
-                    <Star className="h-4 w-4 fill-current" />
-                    <span className="font-black text-[#1E1E1E] text-sm">
+                <div className="flex flex-col flex-1">
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <Star className="h-5 w-5 text-[#FF6B6B] fill-[#FF6B6B]" />
+                    <span className="font-black text-[#1E1E1E] text-base">
                       {product.rating}
                     </span>
                   </div>
-                  <h3 className="text-xl font-black text-[#1E1E1E] line-clamp-2 flex-1 leading-tight group-hover:text-[#4ECDC4] transition-colors mb-4">
+                  <h3 className="text-lg sm:text-xl font-black text-[#1E1E1E] line-clamp-2 flex-1 leading-tight group-hover:text-[#4ECDC4] transition-colors mb-3">
                     <Link to={`/product/${product.id}`}>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {product.name}
                     </Link>
                   </h3>
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t-4 border-[#1E1E1E] border-dashed">
-                    <p className="text-3xl font-black text-[#1E1E1E]">
+                  <div className="flex items-center justify-between mt-auto">
+                    <p className="text-2xl sm:text-3xl font-black text-[#1E1E1E]">
                       {product.price}
                     </p>
-                    <button className="bg-[#4ECDC4] p-3 rounded-xl border-2 border-[#1E1E1E] shadow-[2px_2px_0px_0px_#1E1E1E] hover:bg-[#3dbdb4] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all relative z-10">
-                      <ArrowRight className="h-6 w-6 text-[#1E1E1E]" />
+                    <button className="bg-[#4ECDC4] p-2 sm:p-3 rounded-xl border-2 border-[#1E1E1E] shadow-[2px_2px_0px_0px_#1E1E1E] hover:bg-[#3dbdb4] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all relative z-10">
+                      <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6 text-[#1E1E1E]" />
                     </button>
                   </div>
                 </div>
@@ -284,7 +261,7 @@ export function Home() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-[#FFFDF7] border-b-4 border-[#1E1E1E]">
+      <section className="py-16 bg-[#FFFDF7] border-b-4 border-[#1E1E1E]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black tracking-tight text-[#1E1E1E]">
@@ -350,7 +327,7 @@ export function Home() {
       </section>
 
       {/* Social Proof */}
-      <section className="py-24 bg-[#FF6B6B] border-b-4 border-[#1E1E1E] overflow-hidden relative">
+      <section className="py-16 bg-[#FF6B6B] border-b-4 border-[#1E1E1E] overflow-hidden relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -430,7 +407,7 @@ export function Home() {
       </section>
 
       {/* Instagram Feed */}
-      <section className="py-24 bg-[#FFFDF7] border-b-4 border-[#1E1E1E] overflow-hidden">
+      <section className="py-16 bg-[#FFFDF7] border-b-4 border-[#1E1E1E] overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
             <div className="text-center md:text-left">

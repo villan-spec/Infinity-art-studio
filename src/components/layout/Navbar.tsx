@@ -17,9 +17,9 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b-4 border-[#1E1E1E] bg-[#FFFDF7]">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center gap-3">
-            <img src="https://i.ibb.co/hxfDdcJC/transparent-Photoroom-10.png" alt="Infinity Art Logo" className="h-10 w-10 object-contain" />
-            <span className="text-2xl font-black tracking-tight text-[#1E1E1E]">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3">
+            <img src="https://i.ibb.co/hxfDdcJC/transparent-Photoroom-10.png" alt="Infinity Art Logo" className="h-12 sm:h-20 w-auto object-contain" />
+            <span className="text-xl sm:text-2xl font-black tracking-tight text-[#1E1E1E] whitespace-nowrap">
               Infinity Art
             </span>
           </Link>
@@ -38,7 +38,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <Link to="/account" className="hidden sm:block">
             <Button variant="ghost" size="icon">
               <User className="h-5 w-5" />
@@ -46,9 +46,9 @@ export function Navbar() {
             </Button>
           </Link>
           <Link to="/cart">
-            <Button variant="outline" size="icon" className="relative bg-white">
-              <ShoppingBag className="h-5 w-5" />
-              <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[#FF6B6B] border-2 border-[#1E1E1E] text-xs font-black text-white">
+            <Button variant="ghost" size="icon" className="relative hover:bg-transparent">
+              <ShoppingBag className="h-6 w-6 text-[#1E1E1E]" />
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#FF6B6B] text-[10px] font-black text-white">
                 2
               </span>
               <span className="sr-only">Cart</span>
