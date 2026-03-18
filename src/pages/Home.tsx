@@ -11,7 +11,7 @@ const categories = [
     link: "/category/photo-frames",
   },
   {
-    name: "Printed ur T-shirt",
+    name: "Custom T-shirt",
     image: "https://picsum.photos/seed/tshirt/400/500",
     link: "/category/tshirts",
   },
